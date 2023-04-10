@@ -1,5 +1,5 @@
 # Lojinha Web Automação
-Esse repositório contém automação de alguns testes Web de um software denominado como Lojinha, presente no Programa de testes e qualidade de software. os sub-tópicos abaixo descrevem algumas decisões tomadas na estruturação do projeto. Além disso possui informações sobre técnica de testes, a técnica utilizada foi a de testes exploratórios baseados em sessão usando a heurística CHIQUE, que será explicada no tópico em questão.
+Esse repositório contém automação de alguns testes Web de um software denominado como Lojinha, presente no Programa de testes e qualidade de software. Os sub-tópicos abaixo descrevem algumas decisões tomadas na estruturação do projeto. Além disso possui informações sobre técnica de testes, a técnica utilizada foi a de testes exploratórios baseados em sessão usando a heurística CHIQUE, que será explicada no tópico em questão.
 
 ## Tecnologias utilizadas
 - Java (https://www.oracle.com/br/java/technologies/downloads/#jdk20-windows)
