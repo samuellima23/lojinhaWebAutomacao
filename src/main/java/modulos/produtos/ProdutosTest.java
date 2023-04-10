@@ -17,7 +17,7 @@ public class ProdutosTest {
         System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver_win32\\chromedriver.exe");
         this.navegador = new ChromeDriver();
 
-        //Vou maximizar a tela
+        //Maximizar a tela
         this.navegador.manage().window().maximize();
 
         //Definindo um tempo de espera de 05 segundos
@@ -30,8 +30,6 @@ public class ProdutosTest {
     @Test
     @DisplayName("Não é permitido registrar um produto com valor igual a zero")
     public void testNaoEPermitidoRegistrarComValorIgualAZero() {
-
-        //Fazer Login
         String mensagemApresentada = new LoginPage(navegador)
                 .informarOUsuario("admin")
                 .informarASenha("admin")
@@ -47,6 +45,59 @@ public class ProdutosTest {
 
     }
     @Test
+    @DisplayName("Não é permitido registrar um produto com valor igual a sete mil e um centavo")
+    public void testNaoEPermitidoRegistrarComValorIgualSeteMilEUmCentavo() {
+        String mensagemApresentada = new LoginPage(navegador)
+                .informarOUsuario("admin")
+                .informarASenha("admin")
+                .submeterFormularioDeLogin()
+                .acessarOFormularioDeAdicaoDeNovoProduto()
+                .informarNomeDoProduto("Notebook")
+                .informarValorDoProduto("700001")
+                .informarCorDoProduto("preto, branco")
+                .submeterOFormularioComErro()
+                .capturarMensagemApresentada();
+
+        Assertions.assertEquals("O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00",mensagemApresentada);
+
+    }
+    @Test
+    @DisplayName("Posso Adicionar produtos que possuam o valor de 7.000,00")
+    public void testPossoAdicionarProdutosComValorDeSeteMilReais(){
+        String mensagemApresentada = new LoginPage(navegador)
+                .informarOUsuario("admin")
+                .informarASenha("admin")
+                .submeterFormularioDeLogin()
+                .acessarOFormularioDeAdicaoDeNovoProduto()
+                .informarNomeDoProduto("Notebook")
+                .informarValorDoProduto("7000")
+                .informarCorDoProduto("preto, branco")
+                .submeterOFormularioCorretamente()
+                .capturarMensagemApresentada();
+
+
+        //Vou validar que a mensagem de sucesso foi apresentada
+        Assertions.assertEquals("Produto adicionado com sucesso",mensagemApresentada);
+    }
+    @Test
+    @DisplayName("Posso Adicionar produtos que possuam o valor de 0.01")
+    public void testPossoAdicionarProdutosComValorDeUmCentavo(){
+        String mensagemApresentada = new LoginPage(navegador)
+                .informarOUsuario("admin")
+                .informarASenha("admin")
+                .submeterFormularioDeLogin()
+                .acessarOFormularioDeAdicaoDeNovoProduto()
+                .informarNomeDoProduto("Notebook")
+                .informarValorDoProduto("001")
+                .informarCorDoProduto("preto, branco")
+                .submeterOFormularioCorretamente()
+                .capturarMensagemApresentada();
+
+
+        //Vou validar que a mensagem de sucesso foi apresentada
+        Assertions.assertEquals("Produto adicionado com sucesso",mensagemApresentada);
+    }
+    @Test
     @DisplayName("Não é permitido registrar um produto com valor maior que sete mil")
     public void testNaoEPermitidoRegistrarComValorMaiorQueSeteMil() {
         String mensagemApresentada = new LoginPage(navegador)
@@ -55,7 +106,7 @@ public class ProdutosTest {
                 .submeterFormularioDeLogin()
                 .acessarOFormularioDeAdicaoDeNovoProduto()
                 .informarNomeDoProduto("Notebook")
-                .informarValorDoProduto("700001")
+                .informarValorDoProduto("750001")
                 .informarCorDoProduto("preto, branco")
                 .submeterOFormularioComErro()
                 .capturarMensagemApresentada();
@@ -83,42 +134,7 @@ public class ProdutosTest {
         //Vou validar que a mensagem de sucesso foi apresentada
         Assertions.assertEquals("Produto adicionado com sucesso",mensagemApresentada);
     }
-    @Test
-    @DisplayName("Posso Adicionar produtos que sejam no valor de 7.000,00")
-    public void testPossoAdicionarProdutosComValorDeSeteMilReais(){
-        String mensagemApresentada = new LoginPage(navegador)
-                .informarOUsuario("admin")
-                .informarASenha("admin")
-                .submeterFormularioDeLogin()
-                .acessarOFormularioDeAdicaoDeNovoProduto()
-                .informarNomeDoProduto("Notebook")
-                .informarValorDoProduto("7000")
-                .informarCorDoProduto("preto, branco")
-                .submeterOFormularioCorretamente()
-                .capturarMensagemApresentada();
 
-
-        //Vou validar que a mensagem de sucesso foi apresentada
-        Assertions.assertEquals("Produto adicionado com sucesso",mensagemApresentada);
-    }
-    @Test
-    @DisplayName("Posso Adicionar produtos que sejam no valor de 0.01")
-    public void testPossoAdicionarProdutosComValorDeUmCentavo(){
-        String mensagemApresentada = new LoginPage(navegador)
-                .informarOUsuario("admin")
-                .informarASenha("admin")
-                .submeterFormularioDeLogin()
-                .acessarOFormularioDeAdicaoDeNovoProduto()
-                .informarNomeDoProduto("Notebook")
-                .informarValorDoProduto("001")
-                .informarCorDoProduto("preto, branco")
-                .submeterOFormularioCorretamente()
-                .capturarMensagemApresentada();
-
-
-        //Vou validar que a mensagem de sucesso foi apresentada
-        Assertions.assertEquals("Produto adicionado com sucesso",mensagemApresentada);
-    }
 
     @AfterEach
     public void afterEach(){
