@@ -63,8 +63,8 @@ Explore a jornada de edição de produtos, com o uso da heurística CHIQUE, para
 Samuel
 #### 4. Divisão da tarefa:
 4.1 - Duração 10min; 
-4.2 - 75%execução, 22%investigação e 3% configuração; 
-4.3 - 70%Charter e 30% Oportunidade
+4.2 - 75% execução, 22% investigação e 3% configuração; 
+4.3 - 70% Charter e 30% Oportunidade
 #### 5. Arquivos
 
 ![lojinha icone](https://user-images.githubusercontent.com/33026663/231016185-49660597-d3a6-4fd8-96cd-c297a7754652.png)
